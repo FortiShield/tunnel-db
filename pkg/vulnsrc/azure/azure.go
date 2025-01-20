@@ -7,13 +7,12 @@ import (
 	"path/filepath"
 	"strings"
 
-	bolt "go.etcd.io/bbolt"
-	"golang.org/x/xerrors"
-
 	"github.com/khulnasoft-lab/tunnel-db/pkg/db"
 	"github.com/khulnasoft-lab/tunnel-db/pkg/types"
 	"github.com/khulnasoft-lab/tunnel-db/pkg/vulnsrc/azure/oval"
 	"github.com/khulnasoft-lab/tunnel-db/pkg/vulnsrc/vulnerability"
+	bolt "go.etcd.io/bbolt"
+	"golang.org/x/xerrors"
 )
 
 type Distribution int

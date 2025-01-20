@@ -4,15 +4,14 @@ import (
 	"log"
 	"time"
 
-	bolt "go.etcd.io/bbolt"
-	"golang.org/x/xerrors"
-	"k8s.io/utils/clock"
-
 	"github.com/khulnasoft-lab/tunnel-db/pkg/db"
 	"github.com/khulnasoft-lab/tunnel-db/pkg/metadata"
 	"github.com/khulnasoft-lab/tunnel-db/pkg/types"
 	"github.com/khulnasoft-lab/tunnel-db/pkg/vulnsrc"
 	"github.com/khulnasoft-lab/tunnel-db/pkg/vulnsrc/vulnerability"
+	bolt "go.etcd.io/bbolt"
+	"golang.org/x/xerrors"
+	"k8s.io/utils/clock"
 )
 
 type VulnDB interface {

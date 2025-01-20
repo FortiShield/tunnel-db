@@ -5,9 +5,8 @@ import (
 	"io"
 	"path/filepath"
 
-	"golang.org/x/xerrors"
-
 	"github.com/khulnasoft-lab/tunnel-db/pkg/utils"
+	"golang.org/x/xerrors"
 )
 
 func ParseDefinitions(dir string) ([]Definition, error) {
