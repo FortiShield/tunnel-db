@@ -7,13 +7,13 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/aquasecurity/trivy-db/pkg/db"
-	"github.com/aquasecurity/trivy-db/pkg/dbtest"
-	"github.com/aquasecurity/trivy-db/pkg/types"
-	"github.com/aquasecurity/trivy-db/pkg/utils"
-	oracleoval "github.com/aquasecurity/trivy-db/pkg/vulnsrc/oracle-oval"
-	"github.com/aquasecurity/trivy-db/pkg/vulnsrc/vulnerability"
-	"github.com/aquasecurity/trivy-db/pkg/vulnsrctest"
+	"github.com/khulnasoft-lab/tunnel-db/pkg/db"
+	"github.com/khulnasoft-lab/tunnel-db/pkg/dbtest"
+	"github.com/khulnasoft-lab/tunnel-db/pkg/types"
+	"github.com/khulnasoft-lab/tunnel-db/pkg/utils"
+	oracleoval "github.com/khulnasoft-lab/tunnel-db/pkg/vulnsrc/oracle-oval"
+	"github.com/khulnasoft-lab/tunnel-db/pkg/vulnsrc/vulnerability"
+	"github.com/khulnasoft-lab/tunnel-db/pkg/vulnsrctest"
 )
 
 func TestMain(m *testing.M) {
@@ -634,7 +634,7 @@ func TestVulnSrc_Get(t *testing.T) {
 			},
 		},
 		{
-			name: "happy path. Old trivy-db",
+			name: "happy path. Old tunnel-db",
 			fixtures: []string{
 				"testdata/fixtures/old.yaml",
 				"testdata/fixtures/data-source.yaml",

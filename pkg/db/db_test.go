@@ -9,7 +9,7 @@ import (
 	"github.com/stretchr/testify/require"
 	"go.etcd.io/bbolt"
 
-	"github.com/aquasecurity/trivy-db/pkg/db"
+	"github.com/khulnasoft-lab/tunnel-db/pkg/db"
 )
 
 func TestInit(t *testing.T) {

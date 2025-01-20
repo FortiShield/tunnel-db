@@ -14,10 +14,10 @@ import (
 	"golang.org/x/exp/slices"
 	"golang.org/x/xerrors"
 
-	"github.com/aquasecurity/trivy-db/pkg/db"
-	"github.com/aquasecurity/trivy-db/pkg/types"
-	"github.com/aquasecurity/trivy-db/pkg/utils"
-	"github.com/aquasecurity/trivy-db/pkg/vulnsrc/vulnerability"
+	"github.com/khulnasoft-lab/tunnel-db/pkg/db"
+	"github.com/khulnasoft-lab/tunnel-db/pkg/types"
+	"github.com/khulnasoft-lab/tunnel-db/pkg/utils"
+	"github.com/khulnasoft-lab/tunnel-db/pkg/vulnsrc/vulnerability"
 )
 
 const (
@@ -47,7 +47,7 @@ type PutInput struct {
 	CveID        string
 	Vuln         types.VulnerabilityDetail
 	Advisories   map[string]types.Advisories // pkg name => advisory
-	Erratum      RLSA                        // for extensibility, not used in trivy-db
+	Erratum      RLSA                        // for extensibility, not used in tunnel-db
 }
 
 type DB interface {
@@ -88,7 +88,7 @@ func (vs *VulnSrc) Update(dir string) error {
 }
 
 // parse parses all the advisories from Rocky Linux.
-// It is exported for those who want to customize trivy-db.
+// It is exported for those who want to customize tunnel-db.
 func (vs *VulnSrc) parse(rootDir string) (map[string][]RLSA, error) {
 	errata := map[string][]RLSA{}
 	err := utils.FileWalk(rootDir, func(r io.Reader, path string) error {
@@ -195,7 +195,7 @@ func (vs *VulnSrc) commit(tx *bolt.Tx, platformName string, errata []RLSA) error
 				} else {
 					input.Advisories[pkg.Name] = types.Advisories{
 						// will save `0.0.0` version for non-`x86_64` arch
-						// to avoid false positives when using old Trivy with new database
+						// to avoid false positives when using old Tunnel with new database
 						FixedVersion: fixedVersion("0.0.0", entry.FixedVersion, pkg.Arch), // For backward compatibility
 						Entries:      []types.Advisory{entry},
 					}
@@ -221,7 +221,7 @@ func (vs *VulnSrc) commit(tx *bolt.Tx, platformName string, errata []RLSA) error
 			input.PlatformName = platformName
 			input.CveID = cveID
 			input.Vuln = vuln
-			input.Erratum = erratum // For Trivy Premium
+			input.Erratum = erratum // For Tunnel Premium
 
 			savedInputs[cveID] = input
 		}
@@ -272,7 +272,7 @@ func (r *Rocky) Get(release, pkgName, arch string) ([]types.Advisory, error) {
 		}
 
 		// For backward compatibility
-		// The old trivy-db has no entries, but has fixed versions and custom fields.
+		// The old tunnel-db has no entries, but has fixed versions and custom fields.
 		if len(adv.Entries) == 0 {
 			advisories = append(advisories, types.Advisory{
 				VulnerabilityID: vulnID,

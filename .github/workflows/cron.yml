@@ -1,5 +1,5 @@
 ---
-name: Trivy DB
+name: Tunnel DB
 on:
   schedule:
     - cron: '0 */6 * * *'
@@ -106,9 +106,9 @@ jobs:
             for tag in "${tags[@]}"; do
               echo "Pushing artifact with tag: ${tag}"
           
-              if ./oras push --artifact-type application/vnd.aquasec.trivy.config.v1+json \
+              if ./oras push --artifact-type application/vnd.aquasec.tunnel.config.v1+json \
                 "${full_registry_url}:${tag}" \
-                db.tar.gz:application/vnd.aquasec.trivy.db.layer.v1.tar+gzip; then
+                db.tar.gz:application/vnd.aquasec.tunnel.db.layer.v1.tar+gzip; then
                 echo "Successfully pushed to ${full_registry_url}:${tag}"
               else
                 echo "Failed to push to ${full_registry_url}:${tag}"
@@ -126,7 +126,7 @@ jobs:
         uses: aquasecurity/notify-microsoft-teams@master
         if: failure()
         with:
-          webhook_url: ${{ secrets.TRIVY_MSTEAMS_WEBHOOK }}
+          webhook_url: ${{ secrets.TUNNEL_MSTEAMS_WEBHOOK }}
           needs: ${{ toJson(needs) }}
           job: ${{ toJson(job) }}
           steps: ${{ toJson(steps) }}

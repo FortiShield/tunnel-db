@@ -21,5 +21,4 @@ coverage.txt
 /cache
 /out
 
-# trivy-db Outputs
-trivy-db
+# tunnel-db Outputs

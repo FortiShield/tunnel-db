@@ -12,13 +12,13 @@ import (
 	"k8s.io/utils/clock"
 	fake "k8s.io/utils/clock/testing"
 
-	"github.com/aquasecurity/trivy-db/pkg/db"
-	"github.com/aquasecurity/trivy-db/pkg/dbtest"
-	"github.com/aquasecurity/trivy-db/pkg/metadata"
-	"github.com/aquasecurity/trivy-db/pkg/types"
-	"github.com/aquasecurity/trivy-db/pkg/vulndb"
-	"github.com/aquasecurity/trivy-db/pkg/vulnsrc"
-	"github.com/aquasecurity/trivy-db/pkg/vulnsrc/vulnerability"
+	"github.com/khulnasoft-lab/tunnel-db/pkg/db"
+	"github.com/khulnasoft-lab/tunnel-db/pkg/dbtest"
+	"github.com/khulnasoft-lab/tunnel-db/pkg/metadata"
+	"github.com/khulnasoft-lab/tunnel-db/pkg/types"
+	"github.com/khulnasoft-lab/tunnel-db/pkg/vulndb"
+	"github.com/khulnasoft-lab/tunnel-db/pkg/vulnsrc"
+	"github.com/khulnasoft-lab/tunnel-db/pkg/vulnsrc/vulnerability"
 )
 
 type fakeVulnSrc struct{}
@@ -32,7 +32,7 @@ func (f fakeVulnSrc) Update(dir string) error {
 	return nil
 }
 
-func TestTrivyDB_Insert(t *testing.T) {
+func TestTunnelDB_Insert(t *testing.T) {
 	type fields struct {
 		cacheDir string
 		clock    clock.Clock
@@ -114,7 +114,7 @@ func TestTrivyDB_Insert(t *testing.T) {
 	}
 }
 
-func TestTrivyDB_Build(t *testing.T) {
+func TestTunnelDB_Build(t *testing.T) {
 	modified := time.Date(2020, 8, 24, 17, 37, 0, 0, time.UTC)
 	published := time.Date(2019, 4, 7, 0, 29, 0, 0, time.UTC)
 
