@@ -61,9 +61,9 @@ make db-compress // Compress database into `db.tar.gz` file
 To build tunnel-db image and push into registry, you need to use [Oras CLI](https://oras.land/cli/).
 For example for `ghcr`:
 ```bash
-./oras push --artifact-type application/vnd.aquasec.tunnel.config.v1+json \
+./oras push --artifact-type application/vnd.khulnasoft.tunnel.config.v1+json \
 "ghcr.io/khulnasoft-lab/tunnel-db:2" \
-db.tar.gz:application/vnd.aquasec.tunnel.db.layer.v1.tar+gzip
+db.tar.gz:application/vnd.khulnasoft.tunnel.db.layer.v1.tar+gzip
 ```
 
 ## Update interval
