@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/khulnasoft-lab/tunnel-db/pkg/types"
-	"github.com/khulnasoft-lab/tunnel-db/pkg/vulnsrc/aqua"
+	"github.com/khulnasoft-lab/tunnel-db/pkg/vulnsrc/khulnasoft"
 	"github.com/khulnasoft-lab/tunnel-db/pkg/vulnsrc/vulnerability"
 	"github.com/khulnasoft-lab/tunnel-db/pkg/vulnsrctest"
 )
@@ -36,7 +36,7 @@ func TestVulnSrc_Update(t *testing.T) {
 				{
 					Key: []string{
 						"advisory-detail",
-						"AQUA-2024-0001",
+						"KHULNASOFT-2024-0001",
 						"pip::The Khulnasoft Security Vulnerability Database",
 						"ultralytics",
 					},
@@ -54,7 +54,7 @@ func TestVulnSrc_Update(t *testing.T) {
 				{
 					Key: []string{
 						"vulnerability-detail",
-						"AQUA-2024-0001",
+						"KHULNASOFT-2024-0001",
 						"aqua",
 					},
 					Value: types.VulnerabilityDetail{
@@ -71,7 +71,7 @@ func TestVulnSrc_Update(t *testing.T) {
 				{
 					Key: []string{
 						"vulnerability-id",
-						"AQUA-2024-0001",
+						"KHULNASOFT-2024-0001",
 					},
 					Value: map[string]interface{}{},
 				},
